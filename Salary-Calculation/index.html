@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="src/style.css">
+    <title>Salary Calculation</title>
+</head>
+<body>
+    <div>
+        <form>
+            
+            <p>Salary Calculation</p>
+            <input type="text" name="name" id="name" placeholder="Your name" value="Ronaldo"><br>
+            <input type="number" name="hours" id="hours" placeholder="Worked hours" value="80"><br>
+            <input type="number" name="price" id="price" placeholder="Hourly price" value="40"><br>
+            <input type="number" name="dependents" id="dependents" placeholder="Number of dependents" value="2"><br>
+            <input type="number" name="INSS" id="INSS" placeholder="%INSS" value="5"><br>
+            <input type="number" name="IRRF" id="IRRF" placeholder="%IRRF" value="5"><br>
+            <br>
+            <!-- Comment <button onclick="calculate()">KK</button> -->
+            <div id="answer"></div>
+        </form>
+        <script src="src/calculation.js"></script>
+    </div>
+</body>
+</html>
