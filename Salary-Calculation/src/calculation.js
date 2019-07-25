@@ -53,4 +53,4 @@ document.addEventListener('keydown', event => {
     }
 })
 
-//https://www.google.com/search?q=IRRF&client=ms-android-motorola&prmd=niv&source=lnms&tbm=isch&sa=X&ved=2ahUKEwil5YSmvs7jAhVyw1kKHemcAuIQ_AUoAnoECBIQAg&biw=360&bih=512#imgrc=kbZJghbLa2ekmM
+//https://docs.google.com/spreadsheets/d/1_jrujhqHplhDH0FF8mibRTzdbTC0lBJu4XwN4HzOXNg/edit#gid=0 - Tabela INSS
