@@ -1,23 +1,30 @@
-let data = {
+var data = {
     name : document.getElementById("name"),
     hours : document.getElementById("hours"),
     price : document.getElementById("price"),
     dependents : document.getElementById("dependents"),
 }
-  
-function check(){
-    if(true){
-        calculate()
-    }
-    else{
-        alert('Fill in the fields correctly')
-    }
+
+var INSS = ""
+var valueINSS = 0
+
+var IRRF = ""
+var valueIRRF = 0
+
+var grossSalary = 0
+
+function start() {
+    calculate()
+    calculateINSS()
+    calculateIRRF()
+    render()
 }
 
 function calculate(){
-    var grossSalary = (data.hours.value * data.price.value)
-    var INSS = ""
-    valueINSS = 0
+    grossSalary = (hours.valueAsNumber * price.valueAsNumber)
+}
+
+function calculateINSS(){
 
     if(grossSalary <= 1317.08){
         valueINSS = (grossSalary * 8/100)
@@ -32,24 +39,49 @@ function calculate(){
         INSS = '11%'
     }
     else if (grossSalary >= 4390.25) {
-        valueINSS = (grossSalary + 482.93)
-        INSS = '482,93'
+        valueINSS = 482.93
+        INSS = '482.93 reais'
     }
+}
 
-    var valueIRRF = (grossSalary - valueINSS)
-    var netSalary = (grossSalary - (valueIRRF + valueINSS))
-    
-    let text =`INSS value ${valueINSS}, INSS percentage ${INSS} <br>`
-    text += `IRRF value ${valueIRRF}, IRRF percentage <br>` 
-    text += `Gross salary ${grossSalary}<br>`
-    text += `Net salary ${netSalary}`
+function calculateIRRF() {
+
+    if(grossSalary < 1903.98){
+        valueIRRF = 0
+        IRRF = '0'
+    }
+    else if (grossSalary < 2826.65) {
+        valueIRRF = (grossSalary * 75/1000)
+        IRRF = '7.5%'
+    }
+    else if (grossSalary < 3751.05) {
+        valueIRRF = (grossSalary * 15/100)
+        IRRF = '15%'
+    }
+    else if (grossSalary < 4664.68) {
+        valueIRRF = (grossSalary * 225/1000)
+        IRRF = '22.5%'
+    }
+    else if (grossSalary > 4664.68) {
+        valueIRRF = (grossSalary * 275/1000)
+        IRRF = '27.5%'
+    }
+}
+
+function render() {
+    netSalary = (grossSalary - (valueINSS + valueIRRF))
+
+    let text =`INSS value ${valueINSS} reais, INSS ${INSS} <br>`
+    text += `IRRF value ${valueIRRF} reais, IRRF ${IRRF} <br>` 
+    text += `Gross salary is ${grossSalary} reais<br>`
+    text += `Net salary ${netSalary} reais`
     
     document.getElementById("answer").innerHTML = text
 }
 
 document.addEventListener('keydown', event => {
     if(event.keyCode === 13) {
-        check()
+        start()
     }
 })
 
